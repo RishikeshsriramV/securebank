@@ -1,0 +1,9 @@
+target/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+*.class
+# real DB credentials must never go to GitHub
+src/main/resources/config.properties

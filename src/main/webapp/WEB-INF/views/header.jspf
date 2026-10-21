@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SecureBank</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+</head>
+<body>
+<nav>
+  <a class="brand" href="${pageContext.request.contextPath}/">&#127974; SecureBank</a>
+  <div class="links">
+    <c:if test="${not empty sessionScope.user}">
+      <span>Hello, <c:out value="${sessionScope.user.name}"/></span>
+      <c:if test="${sessionScope.user.role == 'CUSTOMER'}">
+        <a href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
+        <a href="${pageContext.request.contextPath}/statement">Statement</a>
+      </c:if>
+      <c:if test="${sessionScope.user.role == 'ADMIN'}">
+        <a href="${pageContext.request.contextPath}/admin">Admin Panel</a>
+      </c:if>
+      <a href="${pageContext.request.contextPath}/logout">Logout</a>
+    </c:if>
+  </div>
+</nav>
+<main class="container">
+  <c:if test="${not empty error}"><div class="alert error"><c:out value="${error}"/></div></c:if>
+  <c:if test="${not empty flash}"><div class="alert success"><c:out value="${flash}"/></div></c:if>
